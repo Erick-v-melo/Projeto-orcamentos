@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sistema de Orçamentos - Orçamentos</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body id="orcamentosPage">
+  <div class="container">
+    <header class="topbar">
+      <div class="title-left">
+        <h1>Orçamentos</h1>
+        <p id="userInfo" class="user-info">Olá, <span id="userName">Usuário</span></p>
+      </div>
+
+      <div class="right-controls">
+        <div class="acessibilidade">
+          <button class="btn-increase-font" title="Aumentar fonte">A+</button>
+          <button class="btn-decrease-font" title="Diminuir fonte">A-</button>
+          <button class="btn-toggle-theme" title="Alternar tema">🌙/☀️</button>
+        </div>
+        <button id="btnLogout" class="btn-logout">Sair</button>
+      </div>
+    </header>
+
+    <!-- Formulário de cadastro -->
+    <section class="card">
+      <h2>Novo Orçamento</h2>
+      <form id="orcForm">
+        <label for="titulo">Título</label>
+        <input id="titulo" type="text" required placeholder="Ex: Plano anual" />
+
+        <label for="ano">Ano</label>
+        <input id="ano" type="number" required min="1900" max="2100" placeholder="2025" />
+
+        <label for="previsto">Valor Previsto (R$)</label>
+        <input id="previsto" type="number" step="0.01" placeholder="10000.00" />
+
+        <label for="executado">Valor Executado (R$)</label>
+        <input id="executado" type="number" step="0.01" placeholder="0.00" />
+
+        <label for="descricao">Descrição</label>
+        <textarea id="descricao" placeholder="Observações (opcional)"></textarea>
+
+        <div class="form-actions">
+          <button type="submit" id="btnCadastrar">Cadastrar Orçamento</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Lista -->
+    <section class="card">
+      <h2>Meus Orçamentos</h2>
+      <table aria-label="Tabela de orçamentos">
+        <thead>
+          <tr>
+            <th>Título</th>
+            <th>Ano</th>
+            <th>Previsto (R$)</th>
+            <th>Executado (R$)</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody id="orcTableBody">
+          <tr><td colspan="5">Carregando...</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer class="footer">
+      <small>Projeto de faculdade — Sistema de cadastro de orçamentos</small>
+    </footer>
+  </div>
+</body>
+</html>

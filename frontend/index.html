@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sistema de Orçamentos - Login</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <header class="topbar">
+      <h1>Sistema de Orçamentos</h1>
+
+      <div class="acessibilidade">
+        <button class="btn-increase-font" title="Aumentar fonte">A+</button>
+        <button class="btn-decrease-font" title="Diminuir fonte">A-</button>
+        <button class="btn-toggle-theme" title="Alternar tema">🌙/☀️</button>
+      </div>
+    </header>
+
+    <main class="grid-2">
+      <!-- Login -->
+      <section class="card" id="loginCard">
+        <h2>Login</h2>
+        <label for="emailLogin">Email</label>
+        <input type="email" id="emailLogin" placeholder="seu@email.com" />
+
+        <label for="senhaLogin">Senha</label>
+        <input type="password" id="senhaLogin" placeholder="Senha" />
+
+        <button id="btnLogin">Entrar</button>
+        <p class="hint">Após login você será redirecionado para a página de orçamentos.</p>
+      </section>
+
+      <!-- Registro -->
+      <section class="card" id="registerCard">
+        <h2>Registrar novo usuário</h2>
+        <label for="nomeRegistro">Nome</label>
+        <input type="text" id="nomeRegistro" placeholder="Seu nome" />
+
+        <label for="emailRegistro">Email</label>
+        <input type="email" id="emailRegistro" placeholder="seu@email.com" />
+
+        <label for="senhaRegistro">Senha</label>
+        <input type="password" id="senhaRegistro" placeholder="Senha" />
+
+        <button id="btnRegister">Registrar</button>
+        <p class="hint">Crie um usuário rápido para testar o sistema.</p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <small>Projeto de faculdade — Sistema de cadastro de orçamentos</small>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,167 @@
+/* ======== Reset & base ======== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #f4f6f9;
+  --card: #ffffff;
+  --text: #222;
+  --muted: #666;
+  --accent: #007bff;
+  --accent-hover: #0056b3;
+  --card-shadow: rgba(0,0,0,0.08);
+}
+
+html,body { height: 100%; }
+body {
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing:antialiased;
+  transition: background 0.25s ease, color 0.25s ease;
+  font-size: 16px; /* default, alterável pela acessibilidade */
+  line-height: 1.4;
+  padding: 18px;
+}
+
+/* ======== Layout ======== */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.title-left h1 { font-size: 22px; }
+.user-info { color: var(--muted); font-size: 14px; margin-top: 4px; }
+
+/* Grid duas colunas no index */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+/* Cartões */
+.card {
+  background: var(--card);
+  padding: 18px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px var(--card-shadow);
+  border: 1px solid rgba(0,0,0,0.03);
+}
+
+/* Tipos */
+h1, h2 { margin-bottom: 12px; color: var(--text); }
+h2 { font-size: 18px; }
+
+label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* Inputs e textarea */
+input[type="text"], input[type="email"], input[type="password"],
+input[type="number"], textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #d6dbe0;
+  background: #fff;
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+input:focus, textarea:focus {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  border-color: var(--accent);
+}
+
+/* Textarea */
+textarea { min-height: 80px; resize: vertical; }
+
+/* Botões */
+button {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: transform 0.08s ease, background 0.15s ease;
+}
+
+button:hover { background: var(--accent-hover); transform: translateY(-1px); }
+.btn-logout { background: #ef5350; }
+.btn-logout:hover { background: #d32f2f; }
+
+/* Acessibilidade area */
+.acessibilidade { display:flex; gap:8px; align-items:center; }
+.acessibilidade button { background: #444; padding: 8px 10px; font-weight:600; }
+.acessibilidade button:hover { background: #222; }
+
+/* Form actions */
+.form-actions { margin-top: 12px; text-align: right; }
+
+/* Tabela */
+table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+th, td {
+  padding: 10px 8px;
+  text-align: center;
+  border: 1px solid #e6e9ec;
+  font-size: 14px;
+}
+th {
+  background: var(--accent);
+  color: white;
+  font-weight: 700;
+}
+tr:nth-child(even) td { background: #fafafb; }
+
+/* Footer */
+.footer { margin-top: 18px; text-align: center; color: var(--muted); font-size: 13px; }
+
+/* Small screens */
+@media (max-width: 800px) {
+  .grid-2 { grid-template-columns: 1fr; }
+  .topbar { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+
+/* ======== Tema escuro ======== */
+body.dark {
+  --bg: #0f1112;
+  --card: #141617;
+  --text: #e8eef6;
+  --muted: #a9b0b8;
+  --accent: #0ea5ff;
+  --accent-hover: #0284c7;
+  --card-shadow: rgba(0,0,0,0.6);
+}
+
+/* Ajustes visuais para modo escuro (inputs/buttons) */
+body.dark input, body.dark textarea {
+  background: #1b1d1e;
+  border-color: #2a2a2a;
+  color: var(--text);
+}
+
+body.dark th { background: #222; color: var(--text); }
+body.dark tr:nth-child(even) td { background: #161718; }
+
+/* ======== Foco acessível ======== */
+:focus { outline: 3px solid rgba(0,123,255,0.18); outline-offset: 2px; }
+
+/* ======== Mensagens pequenas ======== */
+.hint { margin-top: 8px; color: var(--muted); font-size: 13px; }
