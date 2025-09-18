@@ -1,5 +1,5 @@
 /* script.js - controla index.html e orcamentos.html */
-const API = "http://localhost:3000"; // ajuste se subir backend na nuvem
+const API = "https://projeto-orcamentos.onrender.com"; // ajuste se subir backend na nuvem
 
 /* ---------- utilitários ---------- */
 function qs(id) { return document.getElementById(id); }
