@@ -1,5 +1,5 @@
 /* script.js - controla index.html e orcamentos.html */
-const API = "https://projeto-orcamentos.onrender.com"; // ajuste se subir backend na nuvem
+const API = "https://projeto-orcamentos.onrender.com";
 
 /* ---------- utilitários ---------- */
 function qs(id) { return document.getElementById(id); }
@@ -21,18 +21,27 @@ function applyThemeFromStorage() {
 }
 function applyFontFromStorage() {
   const stored = localStorage.getItem("fontSize");
-  if (stored) document.body.style.fontSize = stored + "px";
+  if (stored) {
+    const elements = document.querySelectorAll("body *");
+    elements.forEach(el => el.style.fontSize = stored + "px");
+  }
 }
 
 /* ---------- Acessibilidade: fonte e tema ---------- */
 function alterarFonte(delta) {
-  const computed = window.getComputedStyle(document.body).fontSize;
-  const cur = parseInt(computed.replace("px", "")) || 16;
-  let novo = cur + delta;
-  if (novo < 12) novo = 12;
-  if (novo > 24) novo = 24;
-  document.body.style.fontSize = novo + "px";
-  localStorage.setItem("fontSize", novo);
+  const elements = document.querySelectorAll("body *"); // todos os elementos
+  elements.forEach(el => {
+    const computed = window.getComputedStyle(el).fontSize;
+    const cur = parseInt(computed.replace("px", ""));
+    if (!isNaN(cur)) {
+      let novo = cur + delta;
+      if (novo < 12) novo = 12;
+      if (novo > 36) novo = 36;
+      el.style.fontSize = novo + "px";
+    }
+  });
+  // salvar o tamanho da fonte do body como referência
+  localStorage.setItem("fontSize", parseInt(window.getComputedStyle(document.body).fontSize));
 }
 
 function alternarTema() {
@@ -57,7 +66,6 @@ async function registrar() {
     const data = await res.json();
     if (res.ok && data.id) {
       alert("Usuário criado com sucesso! Agora faça login.");
-      // preenche o formulário de login para facilitar
       qs("emailLogin").value = email;
       qs("senhaLogin").value = senha;
     } else {
@@ -81,11 +89,9 @@ async function login() {
       body: JSON.stringify({ email, senha })
     });
 
-    // se backend retornar 401, res.ok será false e o json terá msg
     const data = await res.json();
     if (res.ok && data.sucesso) {
       localStorage.setItem("usuario", JSON.stringify(data.usuario));
-      // redireciona
       window.location.href = "orcamentos.html";
     } else {
       alert(data.msg || "Credenciais inválidas.");
@@ -126,7 +132,6 @@ async function cadastrarOrcamento() {
     });
     const data = await res.json();
     if (res.ok) {
-      // sucesso
       qs("orcForm").reset();
       listarOrcamentos();
     } else {
@@ -188,12 +193,11 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".btn-decrease-font").forEach(b => b.addEventListener("click", () => alterarFonte(-1)));
   document.querySelectorAll(".btn-toggle-theme").forEach(b => b.addEventListener("click", alternarTema));
 
-  // Se estamos no index
+  // index.html
   if (qs("loginCard")) {
     qs("btnRegister").addEventListener("click", registrar);
     qs("btnLogin").addEventListener("click", login);
 
-    // permitir submit com Enter nos inputs (opcional)
     ["emailLogin","senhaLogin"].forEach(id => {
       const el = qs(id);
       if (!el) return;
@@ -201,23 +205,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Se estamos na página de orçamentos
+  // orcamentos.html
   if (qs("orcamentosPage")) {
-    // verifica usuário
     const usuario = JSON.parse(localStorage.getItem("usuario") || "null");
     if (!usuario) return window.location.href = "index.html";
 
     qs("userName").textContent = usuario.nome || usuario.email || "Usuário";
     qs("btnLogout").addEventListener("click", logout);
 
-    // formulário
     const form = qs("orcForm");
     form && form.addEventListener("submit", (e) => {
       e.preventDefault();
       cadastrarOrcamento();
     });
 
-    // lista atual
     listarOrcamentos();
   }
 });

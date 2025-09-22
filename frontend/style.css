@@ -10,12 +10,12 @@
   --card-shadow: rgba(0,0,0,0.08);
 }
 
-html,body { height: 100%; }
+html, body { height: 100%; }
 body {
   font-family: Inter, "Segoe UI", Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
-  -webkit-font-smoothing:antialiased;
+  -webkit-font-smoothing: antialiased;
   transition: background 0.25s ease, color 0.25s ease;
   font-size: 16px; /* default, alterável pela acessibilidade */
   line-height: 1.4;
@@ -36,8 +36,8 @@ body {
   margin-bottom: 18px;
 }
 
-.title-left h1 { font-size: 22px; }
-.user-info { color: var(--muted); font-size: 14px; margin-top: 4px; }
+.title-left h1 { font-size: 1.375rem; } /* relativo, muda com body */
+.user-info { color: var(--muted); font-size: 0.875rem; margin-top: 4px; }
 
 /* Grid duas colunas no index */
 .grid-2 {
@@ -57,14 +57,14 @@ body {
 }
 
 /* Tipos */
-h1, h2 { margin-bottom: 12px; color: var(--text); }
-h2 { font-size: 18px; }
+h1, h2 { margin-bottom: 12px; color: var(--text); font-size: 1.5rem; }
+h2 { font-size: 1.125rem; }
 
 label {
   display: block;
   margin-top: 10px;
   margin-bottom: 6px;
-  font-size: 13px;
+  font-size: 0.875rem;
   color: var(--muted);
 }
 
@@ -77,7 +77,7 @@ input[type="number"], textarea {
   border: 1px solid #d6dbe0;
   background: #fff;
   color: var(--text);
-  font-size: 15px;
+  font-size: 0.9375rem;
   outline: none;
   transition: box-shadow 0.15s ease, border-color 0.15s ease;
 }
@@ -99,7 +99,7 @@ button {
   color: white;
   cursor: pointer;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 0.875rem;
   transition: transform 0.08s ease, background 0.15s ease;
 }
 
@@ -116,12 +116,11 @@ button:hover { background: var(--accent-hover); transform: translateY(-1px); }
 .form-actions { margin-top: 12px; text-align: right; }
 
 /* Tabela */
-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 0.875rem; }
 th, td {
   padding: 10px 8px;
   text-align: center;
   border: 1px solid #e6e9ec;
-  font-size: 14px;
 }
 th {
   background: var(--accent);
@@ -131,7 +130,7 @@ th {
 tr:nth-child(even) td { background: #fafafb; }
 
 /* Footer */
-.footer { margin-top: 18px; text-align: center; color: var(--muted); font-size: 13px; }
+.footer { margin-top: 18px; text-align: center; color: var(--muted); font-size: 0.8125rem; }
 
 /* Small screens */
 @media (max-width: 800px) {
@@ -164,4 +163,4 @@ body.dark tr:nth-child(even) td { background: #161718; }
 :focus { outline: 3px solid rgba(0,123,255,0.18); outline-offset: 2px; }
 
 /* ======== Mensagens pequenas ======== */
-.hint { margin-top: 8px; color: var(--muted); font-size: 13px; }
+.hint { margin-top: 8px; color: var(--muted); font-size: 0.8125rem; }
